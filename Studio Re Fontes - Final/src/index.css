@@ -266,3 +266,12 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
 @keyframes portfolioMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:700px){.portfolio-track{gap:12px;animation-duration:38s}.portfolio-track .portfolio-card{width:72vw;flex-basis:72vw}}
 @media(prefers-reduced-motion:reduce){.portfolio-track{animation:none;overflow-x:auto;max-width:100%}}
+
+
+/* Instagram shortcut in the header on desktop and mobile */
+.nav-instagram{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;color:#a83d76;font-size:12px;font-weight:700;transition:color .2s,transform .2s}
+.nav-instagram:hover{color:#d94d96;transform:translateY(-1px)}
+.nav-instagram svg{display:block;flex-shrink:0}
+@media(max-width:1100px){.nav-controls{gap:12px}.desktop-navigation{gap:20px}.nav-instagram span{display:none}}
+@media(max-width:900px){.nav-instagram{width:34px;height:38px;margin-right:1px}.nav-instagram svg{width:21px;height:21px}.nav-controls{gap:10px}}
+@media(max-width:560px){.nav-controls{gap:8px}.nav-instagram{width:28px;height:36px}.nav-instagram svg{width:20px;height:20px}}
