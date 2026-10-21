@@ -233,7 +233,7 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
 
 /* Editorial portfolio gallery: image-ready placeholders for the salon team */
 .gallery-filter{display:flex;flex-wrap:wrap;gap:9px;margin:30px 0 22px}
-.gallery-filter-button{appearance:none;border:1px solid #e7d4dc;background:transparent;color:#745b66;border-radius:999px;padding:10px 17px;font:600 11px/1.2 inherit;letter-spacing:.04em;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.gallery-filter-button{appearance:none;border:1px solid #e7d4dc;background:transparent;color:#745b66;border-radius:999px;padding:10px 17px;font-family:inherit;font-size:11px;font-weight:600;line-height:1.2;letter-spacing:.04em;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s}
 .gallery-filter-button:hover{transform:translateY(-2px);border-color:#b85b83;color:#a34270}
 .gallery-filter-button.active{background:#55263e;border-color:#55263e;color:#fff}
 .portfolio-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
