@@ -169,6 +169,7 @@ export default function App() {
     { id: 'home', text: t.navHome },
     { id: 'founder', text: t.navDesktopAbout },
     { id: 'services', text: t.navServices },
+    { id: 'gallery', text: t.navGallery },
     { id: 'visit', text: t.navLocationHours },
     { id: 'contact', text: t.navContact },
   ];
@@ -268,7 +269,8 @@ export default function App() {
             { id: 'body', label: lang === 'pt' ? 'Corpo e beleza' : lang === 'es' ? 'Cuerpo y belleza' : 'Body & beauty' },
           ].map(filter => <button type="button" key={filter.id} className={'gallery-filter-button '+(galleryFilter === filter.id ? 'active' : '')} onClick={() => setGalleryFilter(filter.id)} aria-pressed={galleryFilter === filter.id}>{filter.label}</button>)}
         </div>
-        <div className="portfolio-grid">
+        <div className="portfolio-grid" aria-label={lang === 'pt' ? 'Galeria automática de fotos' : lang === 'es' ? 'Galería automática de fotos' : 'Automatic photo gallery'}>
+          <div className="portfolio-track">
           {[
             { id: 1, category: 'hair', title: lang === 'pt' ? 'Transformação capilar' : lang === 'es' ? 'Transformación capilar' : 'Hair transformation' },
             { id: 2, category: 'nails', title: lang === 'pt' ? 'Unhas impecáveis' : lang === 'es' ? 'Uñas impecables' : 'Beautiful nails' },
@@ -282,10 +284,11 @@ export default function App() {
             { id: 10, category: 'skin', title: lang === 'pt' ? 'Pele radiante' : lang === 'es' ? 'Piel radiante' : 'Glowing skin' },
             { id: 11, category: 'body', title: lang === 'pt' ? 'Seu momento' : lang === 'es' ? 'Tu momento' : 'Your moment' },
             { id: 12, category: 'nails', title: lang === 'pt' ? 'Arte nas unhas' : lang === 'es' ? 'Arte en las uñas' : 'Nail art' },
-          ].filter(item => galleryFilter === 'all' || item.category === galleryFilter).map(item => <div className={'portfolio-card portfolio-'+item.category+' reveal'} key={item.id}>
+          ].filter(item => galleryFilter === 'all' || item.category === galleryFilter).flatMap(item => [0, 1].map(copy => <div className={'portfolio-card portfolio-'+item.category} key={item.id+'-'+copy} aria-hidden={copy === 1 ? true : undefined}>
             <div className="portfolio-placeholder"><span className="portfolio-number">{String(item.id).padStart(2, "0")}</span><span className="portfolio-plus"><span>+</span></span><span className="portfolio-placeholder-copy">{lang === 'pt' ? 'Foto será adicionada aqui' : lang === 'es' ? 'La foto se añadirá aquí' : 'Photo will be added here'}</span></div>
             <div className="portfolio-card-caption"><span>{item.title}</span><span className="portfolio-category">{item.category === 'hair' ? (lang === 'pt' ? 'Cabelos' : lang === 'es' ? 'Cabello' : 'Hair') : item.category === 'nails' ? (lang === 'pt' ? 'Unhas' : lang === 'es' ? 'Uñas' : 'Nails') : item.category === 'brows' ? (lang === 'pt' ? 'Sobrancelhas e cílios' : lang === 'es' ? 'Cejas y pestañas' : 'Brows & lashes') : item.category === 'skin' ? (lang === 'pt' ? 'Estética facial' : lang === 'es' ? 'Faciales' : 'Facials') : (lang === 'pt' ? 'Corpo e beleza' : lang === 'es' ? 'Cuerpo y belleza' : 'Body & beauty')}</span></div>
-          </div>)}
+  
+          </div>
         </div>
         <div className="gallery-bottom reveal"><p>{lang === 'pt' ? 'Em breve, fotos reais dos nossos trabalhos.' : lang === 'es' ? 'Próximamente, fotos reales de nuestros trabajos.' : 'Real photos of our work coming soon.'}</p><a className="button button-dark" href={IG} target="_blank" rel="noreferrer"><Instagram size={17}/>{t.galleryFollow}<ArrowUpRight size={18}/></a></div>
       </section>
