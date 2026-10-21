@@ -15,7 +15,7 @@ const MAGAZINE = 'https://fliphtml5.com/vitrinemagazine/VM-Oct-2025/';
 const translations = {
   en: {
     announce: 'BRAZILIAN HAIR & BEAUTY SALON', location: 'DUBLIN 8, IRELAND',
-    navAbout: 'The studio', navFounder: 'Meet Re', navServices: 'Services', navGallery: 'Instagram', navReviews: 'Reviews', navVisit: 'Visit us',
+    navAbout: 'The studio', navFounder: 'Meet Re', navServices: 'Services', navGallery: 'Gallery', navReviews: 'Reviews', navVisit: 'Visit us',
     navHome: 'Home', navDesktopAbout: 'About', navLocationHours: 'Location & Hours', navContact: 'Contact', heroServices: 'Services', heroBook: 'Book Now', heroGoogle: 'Review on Google', floatingTitle: 'QUICK ACCESS', floatingWhatsApp: 'WhatsApp', floatingBook: 'Book an appointment', floatingTop: 'Back to top',
     book: 'BOOK NOW', closeMenu: 'Close navigation', openMenu: 'Open navigation', langLabel: 'Website language',
     heroEyebrow: 'YOUR BEAUTY, OUR PASSION', heroA: 'Feel beautiful.', heroB: 'Be yourself.',
@@ -48,7 +48,7 @@ const translations = {
   },
   pt: {
     announce: 'SALÃO BRASILEIRO DE BELEZA', location: 'DUBLIN 8, IRLANDA',
-    navAbout: 'O estúdio', navFounder: 'Sobre mim', navServices: 'Serviços', navGallery: 'Instagram', navReviews: 'Avaliações', navVisit: 'Onde estamos',
+    navAbout: 'O estúdio', navFounder: 'Sobre mim', navServices: 'Serviços', navGallery: 'Galeria', navReviews: 'Avaliações', navVisit: 'Onde estamos',
     navHome: 'Início', navDesktopAbout: 'Sobre', navLocationHours: 'Localização e horários', navContact: 'Contato', heroServices: 'Serviços', heroBook: 'Agendar', heroGoogle: 'Avaliar no Google', floatingTitle: 'ACESSO RÁPIDO', floatingWhatsApp: 'WhatsApp', floatingBook: 'Agenda', floatingTop: 'Subir ao topo',
     book: 'AGENDAR', closeMenu: 'Fechar menu', openMenu: 'Abrir menu', langLabel: 'Idioma do site',
     heroEyebrow: 'SUA BELEZA, NOSSA PAIXÃO', heroA: 'Sinta-se linda.', heroB: 'Seja você.',
