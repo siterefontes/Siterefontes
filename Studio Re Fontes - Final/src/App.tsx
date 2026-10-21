@@ -81,7 +81,7 @@ const translations = {
   },
   es: {
     announce: 'SALÓN BRASILEÑO DE BELLEZA', location: 'DUBLÍN 8, IRLANDA',
-    navAbout: 'El estudio', navFounder: 'Sobre mí', navServices: 'Servicios', navGallery: 'Instagram', navReviews: 'Reseñas', navVisit: 'Visítanos',
+    navAbout: 'El estudio', navFounder: 'Sobre mí', navServices: 'Servicios', navGallery: 'Galería', navReviews: 'Reseñas', navVisit: 'Visítanos',
     navHome: 'Inicio', navDesktopAbout: 'Sobre nosotros', navLocationHours: 'Ubicación y horarios', navContact: 'Contacto', heroServices: 'Servicios', heroBook: 'Reservar', heroGoogle: 'Opinar en Google', floatingTitle: 'ACCESO RÁPIDO', floatingWhatsApp: 'WhatsApp', floatingBook: 'Reservar cita', floatingTop: 'Volver arriba',
     book: 'RESERVAR', closeMenu: 'Cerrar menú', openMenu: 'Abrir menú', langLabel: 'Idioma del sitio',
     heroEyebrow: 'TU BELLEZA, NUESTRA PASIÓN', heroA: 'Siéntete hermosa.', heroB: 'Sé tú misma.',
