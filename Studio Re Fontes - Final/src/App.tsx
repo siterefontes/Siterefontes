@@ -191,6 +191,7 @@ export default function App() {
         {desktopLinks.map(item => <a href={'#'+item.id} key={item.id}>{item.text}</a>)}
       </nav>
       <div className="nav-controls">
+        <a className="nav-instagram" href={IG} target="_blank" rel="noreferrer" aria-label="Instagram Studio Re Fontes" title="Instagram Studio Re Fontes"><Instagram size={19} strokeWidth={2}/><span>Instagram</span></a>
         <label className="language-control" aria-label={t.langLabel}>
           <span className="lang-indicator">{lang.toUpperCase()}</span>
           <select aria-label={t.langLabel} value={lang} onChange={e => setLang(e.target.value as Lang)}>
