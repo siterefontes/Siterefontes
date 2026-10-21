@@ -16,6 +16,7 @@ const translations = {
   en: {
     announce: 'BRAZILIAN HAIR & BEAUTY SALON', location: 'DUBLIN 8, IRELAND',
     navAbout: 'The studio', navFounder: 'Meet Re', navServices: 'Services', navGallery: 'Instagram', navReviews: 'Reviews', navVisit: 'Visit us',
+    navHome: 'Home', navDesktopAbout: 'About', navLocationHours: 'Location & Hours', navContact: 'Contact', heroServices: 'Services', heroBook: 'Book Now', heroGoogle: 'Review on Google',
     book: 'BOOK NOW', closeMenu: 'Close navigation', openMenu: 'Open navigation', langLabel: 'Website language',
     heroEyebrow: 'YOUR BEAUTY, OUR PASSION', heroA: 'Feel beautiful.', heroB: 'Be yourself.',
     heroText: 'Brazilian warmth, beautiful results. Expert hair, beauty and self-care in the heart of Dublin 8.',
@@ -48,6 +49,7 @@ const translations = {
   pt: {
     announce: 'SALÃO BRASILEIRO DE BELEZA', location: 'DUBLIN 8, IRLANDA',
     navAbout: 'O estúdio', navFounder: 'Sobre mim', navServices: 'Serviços', navGallery: 'Instagram', navReviews: 'Avaliações', navVisit: 'Onde estamos',
+    navHome: 'Início', navDesktopAbout: 'Sobre', navLocationHours: 'Localização e horários', navContact: 'Contato', heroServices: 'Serviços', heroBook: 'Agendar', heroGoogle: 'Avaliar no Google',
     book: 'AGENDAR', closeMenu: 'Fechar menu', openMenu: 'Abrir menu', langLabel: 'Idioma do site',
     heroEyebrow: 'SUA BELEZA, NOSSA PAIXÃO', heroA: 'Sinta-se linda.', heroB: 'Seja você.',
     heroText: 'O carinho brasileiro e resultados incríveis. Cabelo, beleza e autocuidado no coração de Dublin 8.',
@@ -80,6 +82,7 @@ const translations = {
   es: {
     announce: 'SALÓN BRASILEÑO DE BELLEZA', location: 'DUBLÍN 8, IRLANDA',
     navAbout: 'El estudio', navFounder: 'Sobre mí', navServices: 'Servicios', navGallery: 'Instagram', navReviews: 'Reseñas', navVisit: 'Visítanos',
+    navHome: 'Inicio', navDesktopAbout: 'Sobre nosotros', navLocationHours: 'Ubicación y horarios', navContact: 'Contacto', heroServices: 'Servicios', heroBook: 'Reservar', heroGoogle: 'Opinar en Google',
     book: 'RESERVAR', closeMenu: 'Cerrar menú', openMenu: 'Abrir menú', langLabel: 'Idioma del sitio',
     heroEyebrow: 'TU BELLEZA, NUESTRA PASIÓN', heroA: 'Siéntete hermosa.', heroB: 'Sé tú misma.',
     heroText: 'Calidez brasileña y resultados increíbles. Cabello, belleza y bienestar en el corazón de Dublín 8.',
@@ -152,6 +155,13 @@ export default function App() {
   }, []);
 
   const close = () => setMenu(false);
+  const desktopLinks = [
+    { id: 'home', text: t.navHome },
+    { id: 'founder', text: t.navDesktopAbout },
+    { id: 'services', text: t.navServices },
+    { id: 'visit', text: t.navLocationHours },
+    { id: 'contact', text: t.navContact },
+  ];
   const menuLinks = [
     { id: 'about', text: t.navAbout },
     { id: 'founder', text: t.navFounder },
@@ -165,6 +175,9 @@ export default function App() {
     <div className="announcement">{t.announce} <span>✦</span> {t.location}</div>
     <header className="nav">
       <a className="brand" href="#home" onClick={close}><span>STUDIO</span><strong>ReFontes</strong><small>HAIR & BEAUTY</small></a>
+      <nav className="desktop-navigation" aria-label="Main navigation">
+        {desktopLinks.map(item => <a href={'#'+item.id} key={item.id}>{item.text}</a>)}
+      </nav>
       <div className="nav-controls">
         <label className="language-control" aria-label={t.langLabel}>
           <span className="lang-indicator">{lang.toUpperCase()}</span>
@@ -190,9 +203,10 @@ export default function App() {
           <div className="eyebrow"><span className="line"/>{t.heroEyebrow}</div>
           <h1>{t.heroA}<br/><em>{t.heroB}</em></h1>
           <p>{t.heroText}</p>
-          <div className="hero-actions">
-            <a className="button button-dark" href={BOOK} target="_blank" rel="noreferrer">{t.appointment}<ArrowUpRight size={18}/></a>
-            <a className="text-link" href="#services">{t.explore}<ArrowRight size={17}/></a>
+          <div className="hero-actions" aria-label="Quick actions">
+            <a className="hero-link hero-link-outline" href="#services"><Scissors size={16}/>{t.heroServices}</a>
+            <a className="hero-link hero-link-primary" href={BOOK} target="_blank" rel="noreferrer">{t.heroBook}<ArrowUpRight size={17}/></a>
+            <a className="hero-link hero-link-google" href={GOOGLE_REVIEWS} target="_blank" rel="noreferrer"><Star size={16}/>{t.heroGoogle}</a>
           </div>
           <div className="rating"><div className="stars" aria-label="5 stars">★★★★★</div><strong>4.9 / 5</strong><span>2,500+ {t.reviewsOn}</span></div>
         </div>
@@ -268,7 +282,7 @@ export default function App() {
         <div className="visit-panel map-panel reveal"><iframe title="Studio Re Fontes Google Maps" src={MAP_EMBED} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen/><div className="visit-bubble"><span>{t.visitBubble}</span><Heart size={23} fill="currentColor"/></div><a className="location-chip" href={MAP} target="_blank" rel="noreferrer"><MapPin size={18}/> DOLPHIN'S BARN, DUBLIN 8 <ArrowUpRight size={17}/></a></div>
       </section>
 
-      <section className="social"><div className="eyebrow">{t.socialEyebrow}</div><h2 className="reveal">{t.socialA} <em>{t.socialB}</em></h2><p>{t.socialText}</p><div className="social-actions"><a href={IG} target="_blank" rel="noreferrer"><Instagram size={20}/> @studio_refontes <ArrowUpRight size={18}/></a><a href={FB} target="_blank" rel="noreferrer"><Facebook size={20}/> FACEBOOK <ArrowUpRight size={18}/></a></div></section>
+      <section className="social" id="contact"><div className="eyebrow">{t.socialEyebrow}</div><h2 className="reveal">{t.socialA} <em>{t.socialB}</em></h2><p>{t.socialText}</p><div className="social-actions"><a href={IG} target="_blank" rel="noreferrer"><Instagram size={20}/> @studio_refontes <ArrowUpRight size={18}/></a><a href={FB} target="_blank" rel="noreferrer"><Facebook size={20}/> FACEBOOK <ArrowUpRight size={18}/></a></div></section>
     </main>
     <footer><a className="brand footer-brand" href="#home"><span>STUDIO</span><strong>ReFontes</strong><small>HAIR & BEAUTY</small></a><div>4 Dolphin's Barn, Dublin 8 · Ireland</div><div className="footlinks"><a href="#services">{t.footerServices}</a><a href="#founder">{t.footerFounder}</a><a href={BOOK} target="_blank" rel="noreferrer">{t.footerBook}</a><a href={IG} target="_blank" rel="noreferrer">Instagram</a></div><small>© {new Date().getFullYear()} Studio Re Fontes. {t.copyright}</small></footer>
   </>;
