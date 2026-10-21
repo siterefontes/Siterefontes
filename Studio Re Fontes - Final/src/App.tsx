@@ -231,7 +231,7 @@ export default function App() {
 
       <section className="intro section reveal" id="about">
         <div className="intro-left"><div className="eyebrow"><span className="line"/>{t.introEyebrow}</div><h2>{t.introA}<br/><em>{t.introB}</em></h2></div>
-        <div className="intro-right"><p>{t.introText}</p><a href="#founder" className="under-link">{t.introLink}<ArrowUpRight size={17}/></a></div>
+        <div className="intro-right reveal"><p>{t.introText}</p><a href="#founder" className="under-link">{t.introLink}<ArrowUpRight size={17}/></a></div>
       </section>
 
       <section className="founder-section section" id="founder">
@@ -254,7 +254,7 @@ export default function App() {
         <div className="service-foot reveal"><span>{t.servicesFoot}</span><a href={BOOK} target="_blank" rel="noreferrer" className="button button-dark">{t.servicesLink}<ArrowUpRight size={17}/></a></div>
       </section>
 
-      <section className="statement"><Sparkles size={27}/><p className="reveal">{t.statementA}<br/><em>{t.statementB}</em></p><span>{t.statementTag}</span></section>
+      <section className="statement"><Sparkles className="reveal" size={27}/><p className="reveal">{t.statementA}<br/><em>{t.statementB}</em></p><span className="reveal">{t.statementTag}</span></section>
 
       <section className="studio-gallery section" id="gallery">
         <div className="section-top reveal"><div><div className="eyebrow"><span className="line"/>{t.galleryEyebrow}</div><h2>{t.galleryA} <em>{t.galleryB}</em></h2></div><p>{t.galleryIntro}</p></div>
@@ -280,7 +280,7 @@ export default function App() {
         <div className="reviews-heading reveal"><div><div className="eyebrow"><span className="line"/>{t.reviewsEyebrow}</div><h2>{t.reviewsA} <em>{t.reviewsB}</em></h2><p>{t.reviewsIntro}</p></div><div className="review-score"><div className="stars">★★★★★</div><strong>4.9 / 5</strong><span>2,500+ {t.reviewsBadge}</span></div></div>
         <div className="review-grid">{reviewQuotes.map(({quote,name},i) => <article className="review-card reveal" key={name} style={{transitionDelay:i*75+'ms'}}><div className="stars">★★★★★</div><p>“{quote}”</p><div className="review-author">{name}<span>{t.verified}</span></div></article>)}</div>
         <div className="reviews-links reveal"><a className="button button-dark" href={GOOGLE_REVIEWS} target="_blank" rel="noreferrer">{t.googleLink}<ArrowUpRight size={17}/></a><a className="under-link" href={BOOK} target="_blank" rel="noreferrer">{t.treatwellLink}<ArrowUpRight size={17}/></a></div>
-        <p className="reviews-note">{t.reviewsNote}</p>
+        <p className="reviews-note reveal">{t.reviewsNote}</p>
       </section>
 
       <section className="visit section" id="visit">
@@ -292,7 +292,7 @@ export default function App() {
         <div className="visit-panel map-panel reveal"><iframe title="Studio Re Fontes Google Maps" src={MAP_EMBED} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen/><div className="visit-bubble"><span>{t.visitBubble}</span><Heart size={23} fill="currentColor"/></div><a className="location-chip" href={MAP} target="_blank" rel="noreferrer"><MapPin size={18}/> DOLPHIN'S BARN, DUBLIN 8 <ArrowUpRight size={17}/></a></div>
       </section>
 
-      <section className="social" id="contact"><div className="eyebrow">{t.socialEyebrow}</div><h2 className="reveal">{t.socialA} <em>{t.socialB}</em></h2><p>{t.socialText}</p><div className="social-actions"><a href={IG} target="_blank" rel="noreferrer"><Instagram size={20}/> @studio_refontes <ArrowUpRight size={18}/></a><a href={FB} target="_blank" rel="noreferrer"><Facebook size={20}/> FACEBOOK <ArrowUpRight size={18}/></a></div></section>
+      <section className="social" id="contact"><div className="eyebrow reveal">{t.socialEyebrow}</div><h2 className="reveal">{t.socialA} <em>{t.socialB}</em></h2><p className="reveal">{t.socialText}</p><div className="social-actions reveal"><a href={IG} target="_blank" rel="noreferrer"><Instagram size={20}/> @studio_refontes <ArrowUpRight size={18}/></a><a href={FB} target="_blank" rel="noreferrer"><Facebook size={20}/> FACEBOOK <ArrowUpRight size={18}/></a></div></section>
     </main>
     <footer><a className="brand footer-brand" href="#home"><span>STUDIO</span><strong>ReFontes</strong><small>HAIR & BEAUTY</small></a><div>4 Dolphin's Barn, Dublin 8 · Ireland</div><div className="footlinks"><a href="#services">{t.footerServices}</a><a href="#founder">{t.footerFounder}</a><a href={BOOK} target="_blank" rel="noreferrer">{t.footerBook}</a><a href={IG} target="_blank" rel="noreferrer">Instagram</a></div><small>© {new Date().getFullYear()} Studio Re Fontes. {t.copyright}</small></footer>
     <aside className="floating-bubbles" aria-label={t.floatingTitle}>
