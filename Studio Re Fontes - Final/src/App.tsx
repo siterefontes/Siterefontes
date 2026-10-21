@@ -288,6 +288,7 @@ export default function App() {
             <div className="portfolio-placeholder"><span className="portfolio-number">{String(item.id).padStart(2, "0")}</span><span className="portfolio-plus"><span>+</span></span><span className="portfolio-placeholder-copy">{lang === 'pt' ? 'Foto será adicionada aqui' : lang === 'es' ? 'La foto se añadirá aquí' : 'Photo will be added here'}</span></div>
             <div className="portfolio-card-caption"><span>{item.title}</span><span className="portfolio-category">{item.category === 'hair' ? (lang === 'pt' ? 'Cabelos' : lang === 'es' ? 'Cabello' : 'Hair') : item.category === 'nails' ? (lang === 'pt' ? 'Unhas' : lang === 'es' ? 'Uñas' : 'Nails') : item.category === 'brows' ? (lang === 'pt' ? 'Sobrancelhas e cílios' : lang === 'es' ? 'Cejas y pestañas' : 'Brows & lashes') : item.category === 'skin' ? (lang === 'pt' ? 'Estética facial' : lang === 'es' ? 'Faciales' : 'Facials') : (lang === 'pt' ? 'Corpo e beleza' : lang === 'es' ? 'Cuerpo y belleza' : 'Body & beauty')}</span></div>
   
+          </div>))}
           </div>
         </div>
         <div className="gallery-bottom reveal"><p>{lang === 'pt' ? 'Em breve, fotos reais dos nossos trabalhos.' : lang === 'es' ? 'Próximamente, fotos reales de nuestros trabajos.' : 'Real photos of our work coming soon.'}</p><a className="button button-dark" href={IG} target="_blank" rel="noreferrer"><Instagram size={17}/>{t.galleryFollow}<ArrowUpRight size={18}/></a></div>
