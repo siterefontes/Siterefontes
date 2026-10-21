@@ -124,7 +124,7 @@ const times = ['09:30 – 17:30', '09:30 – 18:00', '09:00 – 18:00', '11:00 �
 export default function App() {
   const [lang, setLang] = useState<Lang>('en');
   const [menu, setMenu] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);\n  const [galleryFilter, setGalleryFilter] = useState('all');
   const t = translations[lang];
   const whatsappMessage = lang === 'pt' ? 'Olá! Gostaria de saber mais sobre os serviços do Studio Re Fontes.' : lang === 'es' ? '¡Hola! Me gustaría saber más sobre los servicios de Studio Re Fontes.' : 'Hello! I would like to know more about Studio Re Fontes services.';
   const whatsappLink = 'https://wa.me/353894787308?text=' + encodeURIComponent(whatsappMessage);
@@ -258,22 +258,36 @@ export default function App() {
 
       <section className="studio-gallery section" id="gallery">
         <div className="section-top reveal"><div><div className="eyebrow"><span className="line"/>{t.galleryEyebrow}</div><h2>{t.galleryA} <em>{t.galleryB}</em></h2></div><p>{t.galleryIntro}</p></div>
-        <div className="insta-gallery">
-          <a href={IG} target="_blank" rel="noreferrer" className="insta-main reveal" aria-label={t.galleryStudio}>
-            <img src={SALON_IMAGE} alt="Studio Re Fontes salon, photo from official booking listing" loading="lazy"/>
-            <span className="insta-photo-label"><Instagram size={16}/>{t.galleryStudio}<ArrowUpRight size={18}/></span>
-          </a>
-          <a href={IG} target="_blank" rel="noreferrer" className="insta-tile insta-hair reveal">
-            <span className="insta-tile-icon"><Scissors size={32}/></span><span className="insta-small">STUDIO RE FONTES</span><strong>{t.galleryHair}</strong><span className="insta-visit"><Instagram size={16}/> @studio_refontes <ArrowUpRight size={16}/></span>
-          </a>
-          <a href={IG} target="_blank" rel="noreferrer" className="insta-tile insta-nails reveal">
-            <span className="insta-tile-icon"><Sparkles size={32}/></span><span className="insta-small">STUDIO RE FONTES</span><strong>{t.galleryNails}</strong><span className="insta-visit"><Instagram size={16}/> @studio_refontes <ArrowUpRight size={16}/></span>
-          </a>
-          <a href={IG} target="_blank" rel="noreferrer" className="insta-tile insta-moments reveal">
-            <span className="insta-tile-icon"><Heart size={32}/></span><span className="insta-small">STUDIO RE FONTES</span><strong>{t.galleryMoments}</strong><span className="insta-visit"><Instagram size={16}/> @studio_refontes <ArrowUpRight size={16}/></span>
-          </a>
+        <div className="gallery-filter reveal" role="group" aria-label={lang === 'pt' ? 'Filtrar galeria' : lang === 'es' ? 'Filtrar galería' : 'Filter gallery'}>
+          {[
+            { id: 'all', label: lang === 'pt' ? 'Todos' : lang === 'es' ? 'Todo' : 'All' },
+            { id: 'hair', label: lang === 'pt' ? 'Cabelos' : lang === 'es' ? 'Cabello' : 'Hair' },
+            { id: 'nails', label: lang === 'pt' ? 'Unhas' : lang === 'es' ? 'Uñas' : 'Nails' },
+            { id: 'brows', label: lang === 'pt' ? 'Sobrancelhas e cílios' : lang === 'es' ? 'Cejas y pestañas' : 'Brows & lashes' },
+            { id: 'skin', label: lang === 'pt' ? 'Estética facial' : lang === 'es' ? 'Faciales' : 'Facials' },
+            { id: 'body', label: lang === 'pt' ? 'Corpo e beleza' : lang === 'es' ? 'Cuerpo y belleza' : 'Body & beauty' },
+          ].map(filter => <button type="button" key={filter.id} className={'gallery-filter-button '+(galleryFilter === filter.id ? 'active' : '')} onClick={() => setGalleryFilter(filter.id)} aria-pressed={galleryFilter === filter.id}>{filter.label}</button>)}
         </div>
-        <div className="gallery-bottom reveal"><p>{t.galleryNote}</p><a className="button button-dark" href={IG} target="_blank" rel="noreferrer"><Instagram size={17}/>{t.galleryFollow}<ArrowUpRight size={18}/></a></div>
+        <div className="portfolio-grid">
+          {[
+            { id: 1, category: 'hair', title: lang === 'pt' ? 'Transformação capilar' : lang === 'es' ? 'Transformación capilar' : 'Hair transformation' },
+            { id: 2, category: 'nails', title: lang === 'pt' ? 'Unhas impecáveis' : lang === 'es' ? 'Uñas impecables' : 'Beautiful nails' },
+            { id: 3, category: 'brows', title: lang === 'pt' ? 'Olhar em destaque' : lang === 'es' ? 'Una mirada especial' : 'Beautiful brows & lashes' },
+            { id: 4, category: 'skin', title: lang === 'pt' ? 'Cuidado facial' : lang === 'es' ? 'Cuidado facial' : 'Skin care' },
+            { id: 5, category: 'hair', title: lang === 'pt' ? 'Cor e brilho' : lang === 'es' ? 'Color y brillo' : 'Colour & shine' },
+            { id: 6, category: 'body', title: lang === 'pt' ? 'Momento de autocuidado' : lang === 'es' ? 'Momento de autocuidado' : 'Self-care moment' },
+            { id: 7, category: 'nails', title: lang === 'pt' ? 'Detalhes que encantam' : lang === 'es' ? 'Detalles especiales' : 'Finishing touches' },
+            { id: 8, category: 'brows', title: lang === 'pt' ? 'Realce natural' : lang === 'es' ? 'Belleza natural' : 'Natural beauty' },
+            { id: 9, category: 'hair', title: lang === 'pt' ? 'Novo visual' : lang === 'es' ? 'Nuevo look' : 'A fresh new look' },
+            { id: 10, category: 'skin', title: lang === 'pt' ? 'Pele radiante' : lang === 'es' ? 'Piel radiante' : 'Glowing skin' },
+            { id: 11, category: 'body', title: lang === 'pt' ? 'Seu momento' : lang === 'es' ? 'Tu momento' : 'Your moment' },
+            { id: 12, category: 'nails', title: lang === 'pt' ? 'Arte nas unhas' : lang === 'es' ? 'Arte en las uñas' : 'Nail art' },
+          ].filter(item => galleryFilter === 'all' || item.category === galleryFilter).map(item => <div className={'portfolio-card portfolio-'+item.category+' reveal'} key={item.id}>
+            <div className="portfolio-placeholder"><span className="portfolio-number">0{item.id < 10 ? item.id : item.id}</span><span className="portfolio-plus"><span>+</span></span><span className="portfolio-placeholder-copy">{lang === 'pt' ? 'Foto será adicionada aqui' : lang === 'es' ? 'La foto se añadirá aquí' : 'Photo will be added here'}</span></div>
+            <div className="portfolio-card-caption"><span>{item.title}</span><span className="portfolio-category">{item.category === 'hair' ? (lang === 'pt' ? 'Cabelos' : lang === 'es' ? 'Cabello' : 'Hair') : item.category === 'nails' ? (lang === 'pt' ? 'Unhas' : lang === 'es' ? 'Uñas' : 'Nails') : item.category === 'brows' ? (lang === 'pt' ? 'Sobrancelhas e cílios' : lang === 'es' ? 'Cejas y pestañas' : 'Brows & lashes') : item.category === 'skin' ? (lang === 'pt' ? 'Estética facial' : lang === 'es' ? 'Faciales' : 'Facials') : (lang === 'pt' ? 'Corpo e beleza' : lang === 'es' ? 'Cuerpo y belleza' : 'Body & beauty')}</span></div>
+          </div>)}
+        </div>
+        <div className="gallery-bottom reveal"><p>{lang === 'pt' ? 'Em breve, fotos reais dos nossos trabalhos.' : lang === 'es' ? 'Próximamente, fotos reales de nuestros trabajos.' : 'Real photos of our work coming soon.'}</p><a className="button button-dark" href={IG} target="_blank" rel="noreferrer"><Instagram size={17}/>{t.galleryFollow}<ArrowUpRight size={18}/></a></div>
       </section>
 
       <section className="reviews-section section" id="reviews">
