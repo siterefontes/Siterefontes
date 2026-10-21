@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Instagram, Facebook, MapPin, ArrowUpRight, ArrowRight, Menu, X, Star, Clock3, Heart, Sparkles, ChevronDown, MoveUpRight, Scissors } from 'lucide-react';
+import { Instagram, Facebook, MapPin, ArrowUpRight, ArrowRight, ArrowUp, Menu, X, Star, Clock3, Heart, Sparkles, ChevronDown, MoveUpRight, Scissors, MessageCircle, CalendarDays } from 'lucide-react';
 
 type Lang = 'en' | 'pt' | 'es';
 
@@ -16,7 +16,7 @@ const translations = {
   en: {
     announce: 'BRAZILIAN HAIR & BEAUTY SALON', location: 'DUBLIN 8, IRELAND',
     navAbout: 'The studio', navFounder: 'Meet Re', navServices: 'Services', navGallery: 'Instagram', navReviews: 'Reviews', navVisit: 'Visit us',
-    navHome: 'Home', navDesktopAbout: 'About', navLocationHours: 'Location & Hours', navContact: 'Contact', heroServices: 'Services', heroBook: 'Book Now', heroGoogle: 'Review on Google',
+    navHome: 'Home', navDesktopAbout: 'About', navLocationHours: 'Location & Hours', navContact: 'Contact', heroServices: 'Services', heroBook: 'Book Now', heroGoogle: 'Review on Google', floatingTitle: 'QUICK ACCESS', floatingWhatsApp: 'WhatsApp', floatingBook: 'Book an appointment', floatingTop: 'Back to top',
     book: 'BOOK NOW', closeMenu: 'Close navigation', openMenu: 'Open navigation', langLabel: 'Website language',
     heroEyebrow: 'YOUR BEAUTY, OUR PASSION', heroA: 'Feel beautiful.', heroB: 'Be yourself.',
     heroText: 'Brazilian warmth, beautiful results. Expert hair, beauty and self-care in the heart of Dublin 8.',
@@ -49,7 +49,7 @@ const translations = {
   pt: {
     announce: 'SALÃO BRASILEIRO DE BELEZA', location: 'DUBLIN 8, IRLANDA',
     navAbout: 'O estúdio', navFounder: 'Sobre mim', navServices: 'Serviços', navGallery: 'Instagram', navReviews: 'Avaliações', navVisit: 'Onde estamos',
-    navHome: 'Início', navDesktopAbout: 'Sobre', navLocationHours: 'Localização e horários', navContact: 'Contato', heroServices: 'Serviços', heroBook: 'Agendar', heroGoogle: 'Avaliar no Google',
+    navHome: 'Início', navDesktopAbout: 'Sobre', navLocationHours: 'Localização e horários', navContact: 'Contato', heroServices: 'Serviços', heroBook: 'Agendar', heroGoogle: 'Avaliar no Google', floatingTitle: 'ACESSO RÁPIDO', floatingWhatsApp: 'WhatsApp', floatingBook: 'Agenda', floatingTop: 'Subir ao topo',
     book: 'AGENDAR', closeMenu: 'Fechar menu', openMenu: 'Abrir menu', langLabel: 'Idioma do site',
     heroEyebrow: 'SUA BELEZA, NOSSA PAIXÃO', heroA: 'Sinta-se linda.', heroB: 'Seja você.',
     heroText: 'O carinho brasileiro e resultados incríveis. Cabelo, beleza e autocuidado no coração de Dublin 8.',
@@ -82,7 +82,7 @@ const translations = {
   es: {
     announce: 'SALÓN BRASILEÑO DE BELLEZA', location: 'DUBLÍN 8, IRLANDA',
     navAbout: 'El estudio', navFounder: 'Sobre mí', navServices: 'Servicios', navGallery: 'Instagram', navReviews: 'Reseñas', navVisit: 'Visítanos',
-    navHome: 'Inicio', navDesktopAbout: 'Sobre nosotros', navLocationHours: 'Ubicación y horarios', navContact: 'Contacto', heroServices: 'Servicios', heroBook: 'Reservar', heroGoogle: 'Opinar en Google',
+    navHome: 'Inicio', navDesktopAbout: 'Sobre nosotros', navLocationHours: 'Ubicación y horarios', navContact: 'Contacto', heroServices: 'Servicios', heroBook: 'Reservar', heroGoogle: 'Opinar en Google', floatingTitle: 'ACCESO RÁPIDO', floatingWhatsApp: 'WhatsApp', floatingBook: 'Reservar cita', floatingTop: 'Volver arriba',
     book: 'RESERVAR', closeMenu: 'Cerrar menú', openMenu: 'Abrir menú', langLabel: 'Idioma del sitio',
     heroEyebrow: 'TU BELLEZA, NUESTRA PASIÓN', heroA: 'Siéntete hermosa.', heroB: 'Sé tú misma.',
     heroText: 'Calidez brasileña y resultados increíbles. Cabello, belleza y bienestar en el corazón de Dublín 8.',
@@ -125,6 +125,8 @@ export default function App() {
   const [lang, setLang] = useState<Lang>('en');
   const [menu, setMenu] = useState(false);
   const t = translations[lang];
+  const whatsappMessage = lang === 'pt' ? 'Olá! Gostaria de saber mais sobre os serviços do Studio Re Fontes.' : lang === 'es' ? '¡Hola! Me gustaría saber más sobre los servicios de Studio Re Fontes.' : 'Hello! I would like to know more about Studio Re Fontes services.';
+  const whatsappLink = 'https://wa.me/353894787308?text=' + encodeURIComponent(whatsappMessage);
 
   useEffect(() => {
     const saved = window.localStorage.getItem('sr-fontes-lang');
@@ -285,5 +287,17 @@ export default function App() {
       <section className="social" id="contact"><div className="eyebrow">{t.socialEyebrow}</div><h2 className="reveal">{t.socialA} <em>{t.socialB}</em></h2><p>{t.socialText}</p><div className="social-actions"><a href={IG} target="_blank" rel="noreferrer"><Instagram size={20}/> @studio_refontes <ArrowUpRight size={18}/></a><a href={FB} target="_blank" rel="noreferrer"><Facebook size={20}/> FACEBOOK <ArrowUpRight size={18}/></a></div></section>
     </main>
     <footer><a className="brand footer-brand" href="#home"><span>STUDIO</span><strong>ReFontes</strong><small>HAIR & BEAUTY</small></a><div>4 Dolphin's Barn, Dublin 8 · Ireland</div><div className="footlinks"><a href="#services">{t.footerServices}</a><a href="#founder">{t.footerFounder}</a><a href={BOOK} target="_blank" rel="noreferrer">{t.footerBook}</a><a href={IG} target="_blank" rel="noreferrer">Instagram</a></div><small>© {new Date().getFullYear()} Studio Re Fontes. {t.copyright}</small></footer>
+    <aside className="floating-quick-actions" aria-label={t.floatingTitle}>
+      <div className="floating-quick-heading"><span className="floating-live-dot"/><span>{t.floatingTitle}</span></div>
+      <a className="floating-action floating-whatsapp" href={whatsappLink} target="_blank" rel="noreferrer" aria-label={t.floatingWhatsApp}>
+        <span className="floating-action-icon"><MessageCircle size={19}/></span><span className="floating-action-label">{t.floatingWhatsApp}</span><ArrowUpRight size={14} className="floating-external"/>
+      </a>
+      <a className="floating-action floating-book" href={BOOK} target="_blank" rel="noreferrer" aria-label={t.floatingBook}>
+        <span className="floating-action-icon"><CalendarDays size={18}/></span><span className="floating-action-label">{t.floatingBook}</span><ArrowUpRight size={14} className="floating-external"/>
+      </a>
+      <button type="button" className="floating-action floating-top" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })} aria-label={t.floatingTop}>
+        <span className="floating-action-icon"><ArrowUp size={18}/></span><span className="floating-action-label">{t.floatingTop}</span>
+      </button>
+    </aside>
   </>;
 }
