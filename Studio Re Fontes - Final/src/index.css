@@ -214,3 +214,18 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #dc5
 @media(max-width:650px){.floating-bubbles{right:14px;bottom:max(16px,env(safe-area-inset-bottom));gap:10px}.floating-bubble{width:48px;height:48px}.floating-bubble svg{width:21px;height:21px}.bubble-tooltip{font-size:11px}}
 @media(max-width:370px){.floating-bubbles{right:10px;bottom:12px;gap:8px}.floating-bubble{width:44px;height:44px}}
 @media(prefers-reduced-motion:reduce){.floating-bubble,.bubble-tooltip{transition:none!important}.floating-bubble:hover{transform:none}}
+
+
+/* Smooth page movement and richer scroll-triggered entrance animations */
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+:target{scroll-margin-top:96px}
+.motion-ready .reveal{will-change:opacity,transform}
+.motion-ready .intro-right.reveal{transition-delay:120ms}
+.motion-ready .statement>svg.reveal{transition-delay:40ms}
+.motion-ready .statement>span.reveal{transition-delay:160ms}
+.motion-ready .reviews-note.reveal{transition-delay:120ms}
+.motion-ready .social-actions.reveal{transition-delay:160ms}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .motion-ready .reveal{will-change:auto}
+}
