@@ -124,6 +124,7 @@ const times = ['09:30 – 17:30', '09:30 – 18:00', '09:00 – 18:00', '11:00 �
 export default function App() {
   const [lang, setLang] = useState<Lang>('en');
   const [menu, setMenu] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const t = translations[lang];
   const whatsappMessage = lang === 'pt' ? 'Olá! Gostaria de saber mais sobre os serviços do Studio Re Fontes.' : lang === 'es' ? '¡Hola! Me gustaría saber más sobre los servicios de Studio Re Fontes.' : 'Hello! I would like to know more about Studio Re Fontes services.';
   const whatsappLink = 'https://wa.me/353894787308?text=' + encodeURIComponent(whatsappMessage);
@@ -154,6 +155,13 @@ export default function App() {
     }, { threshold: 0.1, rootMargin: '0px 0px -28px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const updateScrollButton = () => setShowBackToTop(window.scrollY > 280);
+    updateScrollButton();
+    window.addEventListener('scroll', updateScrollButton, { passive: true });
+    return () => window.removeEventListener('scroll', updateScrollButton);
   }, []);
 
   const close = () => setMenu(false);
@@ -287,16 +295,15 @@ export default function App() {
       <section className="social" id="contact"><div className="eyebrow">{t.socialEyebrow}</div><h2 className="reveal">{t.socialA} <em>{t.socialB}</em></h2><p>{t.socialText}</p><div className="social-actions"><a href={IG} target="_blank" rel="noreferrer"><Instagram size={20}/> @studio_refontes <ArrowUpRight size={18}/></a><a href={FB} target="_blank" rel="noreferrer"><Facebook size={20}/> FACEBOOK <ArrowUpRight size={18}/></a></div></section>
     </main>
     <footer><a className="brand footer-brand" href="#home"><span>STUDIO</span><strong>ReFontes</strong><small>HAIR & BEAUTY</small></a><div>4 Dolphin's Barn, Dublin 8 · Ireland</div><div className="footlinks"><a href="#services">{t.footerServices}</a><a href="#founder">{t.footerFounder}</a><a href={BOOK} target="_blank" rel="noreferrer">{t.footerBook}</a><a href={IG} target="_blank" rel="noreferrer">Instagram</a></div><small>© {new Date().getFullYear()} Studio Re Fontes. {t.copyright}</small></footer>
-    <aside className="floating-quick-actions" aria-label={t.floatingTitle}>
-      <div className="floating-quick-heading"><span className="floating-live-dot"/><span>{t.floatingTitle}</span></div>
-      <a className="floating-action floating-whatsapp" href={whatsappLink} target="_blank" rel="noreferrer" aria-label={t.floatingWhatsApp}>
-        <span className="floating-action-icon"><MessageCircle size={19}/></span><span className="floating-action-label">{t.floatingWhatsApp}</span><ArrowUpRight size={14} className="floating-external"/>
+    <aside className="floating-bubbles" aria-label={t.floatingTitle}>
+      <a className="floating-bubble bubble-whatsapp" href={whatsappLink} target="_blank" rel="noreferrer" aria-label={t.floatingWhatsApp} title={t.floatingWhatsApp}>
+        <MessageCircle size={23}/><span className="bubble-tooltip">{t.floatingWhatsApp}</span>
       </a>
-      <a className="floating-action floating-book" href={BOOK} target="_blank" rel="noreferrer" aria-label={t.floatingBook}>
-        <span className="floating-action-icon"><CalendarDays size={18}/></span><span className="floating-action-label">{t.floatingBook}</span><ArrowUpRight size={14} className="floating-external"/>
+      <a className="floating-bubble bubble-book" href={BOOK} target="_blank" rel="noreferrer" aria-label={t.floatingBook} title={t.floatingBook}>
+        <CalendarDays size={22}/><span className="bubble-tooltip">{t.floatingBook}</span>
       </a>
-      <button type="button" className="floating-action floating-top" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })} aria-label={t.floatingTop}>
-        <span className="floating-action-icon"><ArrowUp size={18}/></span><span className="floating-action-label">{t.floatingTop}</span>
+      <button type="button" className={`floating-bubble bubble-top ${showBackToTop ? 'bubble-visible' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })} aria-label={t.floatingTop} title={t.floatingTop} tabIndex={showBackToTop ? 0 : -1} aria-hidden={!showBackToTop}>
+        <ArrowUp size={22}/><span className="bubble-tooltip">{t.floatingTop}</span>
       </button>
     </aside>
   </>;
