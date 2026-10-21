@@ -229,3 +229,30 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
   html{scroll-behavior:auto}
   .motion-ready .reveal{will-change:auto}
 }
+
+
+/* Editorial portfolio gallery: image-ready placeholders for the salon team */
+.gallery-filter{display:flex;flex-wrap:wrap;gap:9px;margin:30px 0 22px}
+.gallery-filter-button{appearance:none;border:1px solid #e7d4dc;background:transparent;color:#745b66;border-radius:999px;padding:10px 17px;font:600 11px/1.2 inherit;letter-spacing:.04em;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.gallery-filter-button:hover{transform:translateY(-2px);border-color:#b85b83;color:#a34270}
+.gallery-filter-button.active{background:#55263e;border-color:#55263e;color:#fff}
+.portfolio-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.portfolio-card{min-width:0;animation:portfolioEnter .45s ease both}
+.portfolio-placeholder{aspect-ratio:4/5;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(145deg,#f7e9ee,#ead0da 54%,#f8f1f3);color:#a45b7b;isolation:isolate;transition:transform .45s,box-shadow .45s}
+.portfolio-card:nth-child(3n+2) .portfolio-placeholder{background:linear-gradient(145deg,#f4e5e9,#e4c3d0 55%,#f7eef1)}
+.portfolio-card:nth-child(3n) .portfolio-placeholder{background:linear-gradient(145deg,#f8eff1,#ecd8df 55%,#e4c4d1)}
+.portfolio-placeholder:before,.portfolio-placeholder:after{content:'';position:absolute;border:1px solid #ffffffa8;border-radius:50%;width:74%;aspect-ratio:1;z-index:-1}
+.portfolio-placeholder:before{transform:translate(-18%,12%)}
+.portfolio-placeholder:after{transform:translate(25%,-25%);width:58%}
+.portfolio-number{position:absolute;top:15px;left:16px;font-size:10px;letter-spacing:.16em;color:#9a6077}
+.portfolio-plus{width:47px;height:47px;border:1px solid #b98098;border-radius:50%;display:grid;place-items:center;font-size:27px;font-weight:300;line-height:1;transition:transform .35s,background .35s,color .35s}
+.portfolio-placeholder-copy{font-size:10px;letter-spacing:.04em;margin-top:14px;color:#89566c;text-align:center;padding:0 10px}
+.portfolio-card:hover .portfolio-placeholder{transform:translateY(-4px);box-shadow:0 18px 35px #57263d18}
+.portfolio-card:hover .portfolio-plus{transform:rotate(90deg);background:#55263e;color:white;border-color:#55263e}
+.portfolio-card-caption{display:flex;flex-direction:column;gap:6px;padding:13px 2px 3px}
+.portfolio-card-caption>span:first-child{font:400 18px/1.25 'Playfair Display',serif;color:#432535}
+.portfolio-category{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#a26a81}
+@keyframes portfolioEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1050px){.portfolio-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}}
+@media(max-width:700px){.portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.gallery-filter{gap:7px;margin:24px 0 17px}.gallery-filter-button{padding:9px 12px;font-size:10px}.portfolio-card-caption>span:first-child{font-size:16px}.portfolio-placeholder-copy{font-size:9px}.portfolio-number{top:11px;left:11px}}
+@media(max-width:380px){.portfolio-grid{gap:9px}.portfolio-card-caption>span:first-child{font-size:14px}.gallery-filter-button{padding:8px 10px}}
