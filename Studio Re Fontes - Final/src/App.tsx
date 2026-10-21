@@ -124,7 +124,8 @@ const times = ['09:30 – 17:30', '09:30 – 18:00', '09:00 – 18:00', '11:00 �
 export default function App() {
   const [lang, setLang] = useState<Lang>('en');
   const [menu, setMenu] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false);\n  const [galleryFilter, setGalleryFilter] = useState('all');
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [galleryFilter, setGalleryFilter] = useState('all');
   const t = translations[lang];
   const whatsappMessage = lang === 'pt' ? 'Olá! Gostaria de saber mais sobre os serviços do Studio Re Fontes.' : lang === 'es' ? '¡Hola! Me gustaría saber más sobre los servicios de Studio Re Fontes.' : 'Hello! I would like to know more about Studio Re Fontes services.';
   const whatsappLink = 'https://wa.me/353894787308?text=' + encodeURIComponent(whatsappMessage);
